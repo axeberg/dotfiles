@@ -1,6 +1,14 @@
 # Axels dotfiles
 
-![Screenshot of my shell prompt]()
+![Screenshot of my shell prompt](http://i.imgur.com/1JoIXAi.png?1)
+
+* I use [iTerm2](https://www.iterm2.com/version3.html) for Mac OSX
+* The shell is [Oh My ZSH](http://ohmyz.sh/)
+* The color preset is [Solarized Dark](http://ethanschoonover.com/solarized)
+* The font that I use is patched with [awesome terminal fonts](https://github.com/gabrielelana/awesome-terminal-fonts):
+  * Regular font setting in iTerm is 14pt [Inconsolata Awesome](https://github.com/gabrielelana/awesome-terminal-fonts/tree/patching-strategy/fonts)
+  * Non-ASCII font setting in iTerm is 14pt Inconsolata Awesome
+
 
 ## Installation
 

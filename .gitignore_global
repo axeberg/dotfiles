@@ -16,10 +16,10 @@ Session.vim
 
 # VS Code
 .vscode/
+
 # localhistory
 .history
 
-# Over-arching stuff
 *.ignored/
 *.ignored.*
 

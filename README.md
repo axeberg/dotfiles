@@ -1,8 +1,8 @@
-# Axels dotfiles
+# Axel's dotfiles
 
-* I use [iTerm2](https://www.iterm2.com/version3.html) for Mac OSX
-* The shell is [Oh My ZSH](http://ohmyz.sh/)
-* The color preset is [Solarized Dark](http://ethanschoonover.com/solarized)
+- I use [iTerm2](https://www.iterm2.com/version3.html) as my terminal
+- The shell is [Oh My Posh](https://ohmyposh.dev/)
+- The theme is Captuccin from ohmyposh
 
 ## Installation
 
@@ -25,6 +25,3 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 ```bash
 ./.macos
 ```
-
-## Original author
-| [Kent C. Dodds](https://kentcdodds.com/) |

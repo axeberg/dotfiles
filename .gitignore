@@ -5,6 +5,9 @@
 .DS_Store
 Desktop.ini
 
+# .extra-file to prevent commits in my name
+.extra
+
 # Thumbnail cache files
 ._*
 Thumbs.db

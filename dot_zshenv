@@ -1,0 +1,70 @@
+# .zshenv - Environment variables (loaded for all shells)
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Default programs
+export EDITOR="nvim"
+export VISUAL="nvim"
+export PAGER="less"
+export BROWSER="open"
+
+# Terminal
+export TERM="xterm-256color"
+export COLORTERM="truecolor"
+
+# Language
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Development paths
+export PROJECTS="$HOME/code"
+export DOTFILES="$HOME/dev/private/dotfiles"
+
+# Rust
+export CARGO_HOME="$HOME/.cargo"
+export RUSTUP_HOME="$HOME/.rustup"
+[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
+
+# Go
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+
+# Node.js
+export N_PREFIX="$HOME/.n"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+
+# Python
+export PYTHONDONTWRITEBYTECODE=1
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Tool configurations
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+export BAT_THEME="TwoDark"
+export FORGIT_FZF_DEFAULT_OPTS="--height 80%"
+
+# Disable telemetry
+export DO_NOT_TRACK=1
+export HOMEBREW_NO_ANALYTICS=1
+export GATSBY_TELEMETRY_DISABLED=1
+export NEXT_TELEMETRY_DISABLED=1
+
+# History
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTSIZE=50000
+export SAVEHIST=50000
+
+# Less
+export LESS="-F -g -i -M -R -S -w -X -z-4"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+
+# Man pages
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# GPG
+export GPG_TTY="$(tty)"

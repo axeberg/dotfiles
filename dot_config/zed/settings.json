@@ -1,0 +1,141 @@
+{
+  // Theme
+  "theme": "Tokyo Night",
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 14,
+  
+  // UI Settings
+  "ui_font_family": "SF Pro Display",
+  "ui_font_size": 14,
+  "cursor_blink": true,
+  "show_whitespaces": "selection",
+  "show_wrap_guides": true,
+  "preferred_line_length": 100,
+  "tab_size": 2,
+  "hard_tabs": false,
+  "soft_wrap": "editor_width",
+  
+  // Editor behavior
+  "format_on_save": true,
+  "autosave": "on_focus_change",
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "auto_update": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  
+  // Project panel
+  "project_panel": {
+    "dock": "left",
+    "git_status": true
+  },
+  
+  // Terminal
+  "terminal": {
+    "font_family": "JetBrains Mono",
+    "font_size": 13,
+    "shell": "/bin/zsh",
+    "working_directory": "current_project_directory",
+    "blinking": "on"
+  },
+  
+  // Vim mode
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  
+  // Git
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  
+  // Language-specific settings
+  "language_overrides": {
+    "Rust": {
+      "tab_size": 4,
+      "formatter": {
+        "external": {
+          "command": "rustfmt",
+          "arguments": ["--edition", "2021"]
+        }
+      }
+    },
+    "Python": {
+      "tab_size": 4,
+      "formatter": {
+        "external": {
+          "command": "black",
+          "arguments": ["-"]
+        }
+      }
+    },
+    "JavaScript": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "TypeScript": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "Go": {
+      "tab_size": 4,
+      "hard_tabs": true,
+      "formatter": {
+        "external": {
+          "command": "gofmt"
+        }
+      }
+    },
+    "YAML": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--parser", "yaml"]
+        }
+      }
+    },
+    "JSON": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--parser", "json"]
+        }
+      }
+    }
+  },
+  
+  // LSP settings
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          "features": "all"
+        },
+        "checkOnSave": {
+          "command": "clippy"
+        }
+      }
+    }
+  },
+  
+  // Key bindings additions
+  "bindings": {
+    "cmd-p": "file_finder::toggle",
+    "cmd-shift-p": "command_palette::toggle",
+    "cmd-b": "project_panel::toggle",
+    "cmd-j": "terminal::toggle"
+  }
+}

@@ -1,0 +1,74 @@
+# Taps
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+# Core tools
+brew "git"
+brew "gh"                # GitHub CLI
+brew "curl"
+brew "wget"
+brew "gnupg"
+
+# Modern CLI tools
+brew "eza"               # Better ls
+brew "bat"               # Better cat
+brew "ripgrep"           # Better grep
+brew "fd"                # Better find
+brew "sd"                # Better sed
+brew "dust"              # Better du
+brew "procs"             # Better ps
+brew "bottom"            # Better top
+brew "zoxide"            # Better cd
+brew "fzf"               # Fuzzy finder
+brew "jq"                # JSON processor
+brew "yq"                # YAML processor
+brew "delta"             # Better git diff
+brew "difftastic"        # Structural diff
+brew "hyperfine"         # Command-line benchmarking
+brew "tokei"             # Count lines of code
+brew "tealdeer"          # tldr client
+
+# Development tools
+brew "neovim"
+brew "tmux"
+brew "zellij"
+brew "starship"
+brew "direnv"
+brew "watchman"
+brew "cmake"
+brew "pkg-config"
+
+# Language tools
+brew "node"
+brew "pnpm"
+brew "python@3.12"
+brew "go"
+brew "rustup"
+brew "ruby"
+brew "lua"
+brew "luarocks"
+
+# Language servers and formatters
+brew "lua-language-server"
+brew "stylua"
+brew "shfmt"
+brew "shellcheck"
+brew "hadolint"
+
+# Version control
+brew "jj"                # Jujutsu
+
+# Utilities
+brew "tree"
+brew "htop"
+brew "ncdu"
+brew "tldr"
+brew "mas"               # Mac App Store CLI
+brew "trash"             # Safe rm
+
+# Optional: Casks for GUI apps
+# cask "ghostty"         # When available
+# cask "zed"
+# cask "visual-studio-code"
+# cask "slack"
+# cask "spotify"

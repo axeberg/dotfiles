@@ -1,0 +1,134 @@
+# .zshrc - Interactive shell configuration
+
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Path configuration
+typeset -U path PATH
+path=(
+  $HOME/.local/bin
+  $HOME/bin
+  $HOME/.bin
+  $HOME/.my_bin
+  $CARGO_HOME/bin
+  $GOBIN
+  $N_PREFIX/bin
+  $PNPM_HOME
+  $HOME/.yarn/bin
+  $HOME/.config/yarn/global/node_modules/.bin
+  ./node_modules/.bin
+  /opt/homebrew/bin
+  /usr/local/bin
+  $path
+)
+
+# CDPATH for quick directory navigation
+CDPATH=.:$HOME:$HOME/code:$HOME/Desktop
+
+# Source Homebrew
+[[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Zinit plugin manager
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [[ ! -d "$ZINIT_HOME" ]]; then
+  print -P "%F{33}▓▒░ %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+  command mkdir -p "$(dirname $ZINIT_HOME)"
+  command git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Load plugins
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+zinit light jeffreytse/zsh-vi-mode
+
+# Oh My Zsh plugins
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -Uz compinit && compinit
+zinit cdreplay -q
+
+# Zsh options
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format
+setopt SHARE_HISTORY             # Share history between all sessions
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion
+setopt APPEND_HISTORY            # Append to history file
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits
+setopt AUTO_CD                   # Auto cd to a directory without typing cd
+setopt AUTO_PUSHD                # Push the old directory onto the stack on cd
+setopt PUSHD_IGNORE_DUPS         # Do not store duplicates in the stack
+setopt PUSHD_SILENT              # Do not print the directory stack after pushd or popd
+setopt CORRECT                   # Spelling correction
+setopt CDABLE_VARS               # Change directory to a path stored in a variable
+setopt EXTENDED_GLOB             # Use extended globbing syntax
+setopt NO_BEEP                   # No beep
+setopt PROMPT_SUBST             # Allow substitution in prompt
+
+# History configuration
+HISTSIZE=5000
+HISTFILESIZE=10000
+SAVEHIST=5000
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $realpath'
+
+# Load additional configurations
+source "$DOTFILES/shell/zsh/aliases.zsh"
+source "$DOTFILES/shell/zsh/functions.zsh"
+
+# Tool integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+
+# Key bindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+bindkey '^r' history-incremental-search-backward
+
+# FZF configuration
+export FZF_DEFAULT_OPTS="
+  --height 40% --layout=reverse --border
+  --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284
+  --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf
+  --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284
+"
+
+# Terminal configuration
+export TERM=xterm-256color
+export CLICOLOR=1
+export LSCOLORS=Fafacxdxbxegedabagacad
+
+# Source additional configuration files
+[[ -f "$HOME/.config/zsh/aliases.zsh" ]] && source "$HOME/.config/zsh/aliases.zsh"
+[[ -f "$HOME/.config/zsh/functions.zsh" ]] && source "$HOME/.config/zsh/functions.zsh"
+
+# Load local configuration if exists
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

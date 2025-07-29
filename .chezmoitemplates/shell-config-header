@@ -1,0 +1,5 @@
+# {{ .chezmoi.sourceFile | trimPrefix .chezmoi.sourceDir | trimPrefix "/" }}
+# Managed by chezmoi - Edit with: chezmoi edit {{ .chezmoi.targetFile }}
+# Generated on: {{ now | date "2006-01-02" }}
+# Host: {{ .chezmoi.hostname }}
+# OS: {{ .chezmoi.os }}/{{ .chezmoi.arch }}

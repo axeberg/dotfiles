@@ -1,0 +1,88 @@
+# Jujutsu configuration
+
+[user]
+# name = "Your Name"
+# email = "your.email@example.com"
+
+[ui]
+# Use delta for diffs
+diff-editor = ["delta"]
+# Use nvim as the default editor
+editor = "nvim"
+# Enable color output
+color = "always"
+# Default log format
+default-revset = "@ | ancestors(@, 2) | trunk()"
+
+[ui.diff]
+# Use git-compatible diff format
+format = "git"
+
+[ui.pager]
+# Use less as pager with color support
+command = ["less", "-FRX"]
+
+[merge-tools.vimdiff]
+program = "nvim"
+merge-args = ["-d", "$left", "$right", "$base", "$output"]
+
+[merge-tools.difft]
+program = "difft"
+diff-args = ["$left", "$right"]
+
+[aliases]
+# Common aliases similar to git
+st = ["status"]
+ci = ["commit"]
+co = ["checkout"]
+br = ["branch"]
+d = ["diff"]
+ds = ["diff", "-r", "@"]
+l = ["log", "-r", "ancestors(@, 10)"]
+ll = ["log", "-r", "ancestors(@, 20)"]
+la = ["log", "-r", "all()"]
+p = ["show", "@"]
+undo = ["undo"]
+amend = ["squash"]
+
+# Jujutsu-specific helpful aliases
+n = ["new"]
+e = ["edit"]
+s = ["squash"]
+m = ["move"]
+r = ["rebase"]
+desc = ["describe"]
+
+# Working with changes
+wip = ["new", "-m", "WIP"]
+split = ["split", "-r", "@"]
+
+[revset-aliases]
+# Useful revset aliases
+"trunk()" = "latest(remote_branches())"
+"mine()" = "author(exact:\"me\")"
+"recent()" = "ancestors(@, 10)"
+
+[git]
+# Automatically import from git
+auto-import = true
+# Push to git branch with same name
+push-branch-prefix = ""
+
+[snapshot]
+# Automatically snapshot the working copy
+auto-snapshot = true
+# Minimum interval between snapshots (in seconds)
+min-interval-ms = 1000
+
+[colors]
+# Color configuration (similar to git)
+"description" = "yellow"
+"author" = "cyan"
+"committer" = "cyan"
+"change_id" = "magenta"
+"commit_id" = "blue"
+"branches" = "green"
+"tags" = "red"
+"divergent" = "red bold"
+"conflict" = "red bold"

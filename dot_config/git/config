@@ -1,0 +1,117 @@
+[user]
+    # Set your name and email
+    # name = Your Name
+    # email = your.email@example.com
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore_global
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[push]
+    default = current
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[fetch]
+    prune = true
+
+[rebase]
+    autoStash = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    colorMoved = default
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = "Tokyo Night"
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = 11
+    frag = magenta bold
+    func = 146 bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+
+[alias]
+    # Shortcuts
+    co = checkout
+    br = branch
+    ci = commit
+    st = status -sb
+    df = diff
+    dfs = diff --staged
+    
+    # Logging
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat
+    last = log -1 HEAD --stat
+    
+    # Branching
+    branches = branch -a
+    remotes = remote -v
+    tags = tag -l
+    
+    # Undo
+    undo = reset HEAD~1 --mixed
+    amend = commit --amend --reuse-message=HEAD
+    
+    # Find
+    find = !git ls-files | grep -i
+    grep = grep -Ii
+    
+    # Stashing
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+    
+    # Working with remotes
+    pull-all = !git pull && git submodule update --init --recursive
+    push-all = !git push && git push --tags
+    
+    # Cleanup
+    cleanup = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+    
+    # Show contributors
+    contributors = shortlog --summary --numbered
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

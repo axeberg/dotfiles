@@ -58,6 +58,9 @@ brew "hadolint"
 # Version control
 brew "jj"                # Jujutsu
 
+# Shell history
+brew "atuin"
+
 # Utilities
 brew "tree"
 brew "htop"
@@ -66,9 +69,10 @@ brew "tldr"
 brew "mas"               # Mac App Store CLI
 brew "trash"             # Safe rm
 
+# Fonts
+cask "font-jetbrains-mono-nerd-font"
+
 # Optional: Casks for GUI apps
-# cask "ghostty"         # When available
+# cask "ghostty"
 # cask "zed"
 # cask "visual-studio-code"
-# cask "slack"
-# cask "spotify"

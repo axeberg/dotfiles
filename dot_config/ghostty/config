@@ -1,42 +1,21 @@
 # Ghostty Configuration
 
-# Font configuration
-font-family = "JetBrains Mono"
+# Font
+font-family = JetBrainsMono Nerd Font
 font-size = 14
 font-thicken = true
 
-# Theme - Tokyo Night
-background = #1a1b26
-foreground = #a9b1d6
-
-# Colors
-palette = 0=#32344a
-palette = 1=#f7768e
-palette = 2=#9ece6a
-palette = 3=#e0af68
-palette = 4=#7aa2f7
-palette = 5=#ad8ee6
-palette = 6=#449dab
-palette = 7=#9699a8
-palette = 8=#444b6a
-palette = 9=#ff7a93
-palette = 10=#b9f27c
-palette = 11=#ff9e64
-palette = 12=#7da6ff
-palette = 13=#bb9af7
-palette = 14=#0db9d7
-palette = 15=#acb0d0
+# Theme
+theme = Catppuccin Latte
 
 # Cursor
 cursor-style = block
 cursor-blink = true
-cursor-color = #e0af68
 
 # Window
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
-window-theme = dark
 
 # Scrolling
 scrollback-limit = 10000
@@ -48,16 +27,11 @@ visual-bell = true
 # Mouse
 mouse-hide-while-typing = true
 
-# Performance
-gpu-acceleration = true
-
 # Copy on select
 copy-on-select = true
 
-# Shell
-shell = /bin/zsh
-
 # Keybindings
+keybind = shift+enter=text:\x1b\r
 keybind = cmd+k=clear
 keybind = cmd+n=new_window
 keybind = cmd+t=new_tab
@@ -77,8 +51,3 @@ keybind = cmd+9=goto_tab:9
 # macOS specific
 macos-option-as-alt = true
 macos-titlebar-style = tabs
-macos-theme-vibrant = true
-
-# URL handling
-url-regex = (https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]
-url-action = open

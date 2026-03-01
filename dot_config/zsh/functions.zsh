@@ -160,17 +160,6 @@ calc() {
     echo "$*" | bc -l
 }
 
-# Show PATH entries on separate lines
-path() {
-    echo "$PATH" | tr ':' '\n' | nl
-}
-
-# Reload shell configuration
-reload() {
-    source ~/.zshrc
-    echo "Zsh configuration reloaded"
-}
-
 # FZF-powered functions
 if command -v fzf >/dev/null 2>&1; then
     # cd to selected directory

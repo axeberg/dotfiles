@@ -1,0 +1,33 @@
+{{- $name := promptStringOnce . "name" "Full name" -}}
+{{- $email := promptStringOnce . "email" "Default email" -}}
+
+{{- $gitPrivateName := promptStringOnce . "git.private.name" "Git identity (private) - name" -}}
+{{- $gitPrivateEmail := promptStringOnce . "git.private.email" "Git identity (private) - email" -}}
+{{- $gitPrivateSigningkey := promptStringOnce . "git.private.signingkey" "Git identity (private) - SSH public key filename" -}}
+
+{{- $gitWorkName := promptStringOnce . "git.work.name" "Git identity (work) - name" -}}
+{{- $gitWorkEmail := promptStringOnce . "git.work.email" "Git identity (work) - email" -}}
+{{- $gitWorkSigningkey := promptStringOnce . "git.work.signingkey" "Git identity (work) - SSH public key filename" -}}
+
+{{- $gitHomelabName := promptStringOnce . "git.homelab.name" "Git identity (homelab) - name" -}}
+{{- $gitHomelabEmail := promptStringOnce . "git.homelab.email" "Git identity (homelab) - email" -}}
+{{- $gitHomelabSigningkey := promptStringOnce . "git.homelab.signingkey" "Git identity (homelab) - SSH public key filename" -}}
+
+[data]
+name = {{ $name | quote }}
+email = {{ $email | quote }}
+
+[data.git.private]
+name = {{ $gitPrivateName | quote }}
+email = {{ $gitPrivateEmail | quote }}
+signingkey = {{ $gitPrivateSigningkey | quote }}
+
+[data.git.work]
+name = {{ $gitWorkName | quote }}
+email = {{ $gitWorkEmail | quote }}
+signingkey = {{ $gitWorkSigningkey | quote }}
+
+[data.git.homelab]
+name = {{ $gitHomelabName | quote }}
+email = {{ $gitHomelabEmail | quote }}
+signingkey = {{ $gitHomelabSigningkey | quote }}

@@ -11,13 +11,7 @@ Everything runs on the **Catppuccin Latte** light theme across the full stack �
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply axeberg/dotfiles
 ```
 
-### Configure
-Edit `.chezmoi.toml` to set your personal information:
-```toml
-[data]
-    name = "Your Name"
-    email = "your.email@example.com"
-```
+On first run, chezmoi will prompt for your git identities (name, email, SSH signing key filename) for each context — private, work, and homelab. These are stored locally in `~/.config/chezmoi/chezmoi.toml` and never committed to the repo. The values populate the per-directory gitconfigs via `includeIf`.
 
 ## What's Included
 
@@ -72,9 +66,11 @@ dot_config/              → ~/.config/
   zellij/config.kdl      → Multiplexer config
   zsh/aliases.zsh        → Shell aliases
   zsh/functions.zsh      → Shell functions
-dot_gitconfig.tmpl       → Git config (templated for per-machine identity)
+dot_gitconfig.tmpl       → Git config (includeIf for per-directory identity)
+dot_gitconfigs/          → ~/.gitconfigs/ (private, work, homelab identities)
 dot_zshrc                → Shell configuration
 dot_zshenv               → Environment variables
+.chezmoi.toml.tmpl       → Prompted setup (git identities, never committed)
 .chezmoiscripts/         → One-time install scripts (Homebrew, Rust, macOS defaults)
 ```
 

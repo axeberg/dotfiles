@@ -2,6 +2,18 @@
     name = {{ .name }}
     email = {{ .email }}
 
+[includeIf "gitdir:~/dev/private/"]
+    path = ~/.gitconfigs/.gitconfig-private
+
+[includeIf "gitdir:~/dev/lab/"]
+    path = ~/.gitconfigs/.gitconfig-private
+
+[includeIf "gitdir:~/dev/work/"]
+    path = ~/.gitconfigs/.gitconfig-work
+
+[includeIf "gitdir:~/dev/private/notes"]
+    path = ~/.gitconfigs/.gitconfig-homelab
+
 [core]
     editor = zed --wait
     excludesfile = ~/.gitignore_global

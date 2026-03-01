@@ -1,0 +1,10 @@
+[user]
+    name = {{ .git.homelab.name }}
+    email = {{ .git.homelab.email }}
+    signingkey = {{ .chezmoi.homeDir }}/.ssh/{{ .git.homelab.signingkey }}
+
+[commit]
+    gpgsign = false
+
+[rebase]
+    updateRefs = true

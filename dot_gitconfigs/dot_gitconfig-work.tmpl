@@ -1,0 +1,19 @@
+[user]
+    name = {{ .git.work.name }}
+    email = {{ .git.work.email }}
+    signingkey = {{ .chezmoi.homeDir }}/.ssh/{{ .git.work.signingkey }}
+
+[commit]
+    gpgsign = false
+
+[alias]
+    toggle-hooks = "!f() { \
+            if git config core.hooksPath > /dev/null 2>&1; then \
+                git config --unset core.hooksPath && echo 'Git: Hooks enabled'; \
+            else \
+                git config core.hooksPath /dev/null && echo 'Git: Hooks disabled'; \
+            fi; \
+        }; f"
+
+[rebase]
+    updateRefs = true

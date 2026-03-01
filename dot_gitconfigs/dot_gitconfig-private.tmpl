@@ -1,0 +1,10 @@
+[user]
+    name = {{ .git.private.name }}
+    email = {{ .git.private.email }}
+    signingkey = {{ .chezmoi.homeDir }}/.ssh/{{ .git.private.signingkey }}
+
+[commit]
+    gpgsign = false
+
+[rebase]
+    updateRefs = true

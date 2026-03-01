@@ -1,82 +1,17 @@
 # axeberg - dotfiles
 
-My preferred development environment configuration managed with [Chezmoi](https://www.chezmoi.io/).
+My preferred development environment configuration managed with [chezmoi](https://www.chezmoi.io/).
 
-## 🚀 Quick Start
+Everything runs on the **Catppuccin Latte** light theme across the full stack — terminal, editor, prompt, multiplexer, and CLI tools.
+
+## Quick Start
 
 ### Install on a new machine (one command)
 ```bash
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply axeberg/dotfiles
 ```
 
-## 📦 What's Included
-
-### Terminal & Shell
-- **Zsh** with Zinit plugin manager
-- **Starship** prompt with custom theme
-- **Ghostty** terminal (GPU-accelerated, modern)
-- **tmux** and **Zellij** multiplexers
-
-### Development Tools
-- **Neovim** with lazy.nvim and LSP support
-- **Zed** editor configuration
-- **Git** with delta diff viewer
-- **jj (Jujutsu)** version control
-- **Rust** toolchain with cargo extensions
-
-### Language Support
-Full LSP, formatter, and linter support for:
-- Rust, Go, Python, JavaScript/TypeScript
-- Ruby, Java, C/C++, Zig
-- Lua, Bash, YAML, JSON, Markdown
-
-### Modern CLI Tools
-- `eza` (better ls)
-- `bat` (better cat)
-- `ripgrep` (better grep)
-- `fd` (better find)
-- `zoxide` (better cd)
-- `fzf` (fuzzy finder)
-- And more... see `dot_config` folder for details
-
-## 🛠️ Usage
-
-### Preview changes before applying
-```bash
-chezmoi diff
-```
-
-### Apply configuration
-```bash
-chezmoi apply -v
-```
-
-### Update from repository
-```bash
-chezmoi update -v
-```
-
-### Edit a managed file
-```bash
-chezmoi edit ~/.zshrc
-chezmoi apply
-```
-
-### Add a new dotfile
-```bash
-chezmoi add ~/.config/newapp/config
-```
-
-## 📁 Structure
-
-- `dot_*` → `.` files (e.g., `dot_zshrc` → `~/.zshrc`)
-- `dot_config/` → `~/.config/`
-- `.chezmoiscripts/` → Installation scripts (run once)
-- `.chezmoi.toml` → Chezmoi configuration
-- `*.tmpl` → Template files for machine-specific configs
-
-## ⚙️ Configuration
-
+### Configure
 Edit `.chezmoi.toml` to set your personal information:
 ```toml
 [data]
@@ -84,15 +19,75 @@ Edit `.chezmoi.toml` to set your personal information:
     email = "your.email@example.com"
 ```
 
-## 🔧 Development
+## What's Included
 
-When working on the dotfiles:
-```bash
-# Use current directory as source
-chezmoi --config .chezmoi.toml --source . diff
-chezmoi --config .chezmoi.toml --source . apply
+### Terminal & Shell
+- **Zsh** with [Zinit](https://github.com/zdharma-continuum/zinit) plugin manager (syntax highlighting, autosuggestions, fzf-tab)
+- **[Starship](https://starship.rs)** prompt (Pure preset, Catppuccin Latte palette)
+- **[Ghostty](https://ghostty.org)** terminal with JetBrainsMono Nerd Font
+- **[Atuin](https://atuin.sh)** for searchable shell history
+- **[Zellij](https://zellij.dev)** and **tmux** multiplexers
+- **[direnv](https://direnv.net)** for per-directory environment variables
+
+### Editors
+- **[Zed](https://zed.dev)** — primary editor with language-specific LSP, formatter, and linter configs for Rust, TypeScript, Python, and more
+- **[Neovim](https://neovim.io)** with lazy.nvim and LSP support
+
+### Version Control
+- **Git** with [delta](https://github.com/dandavella/delta) (side-by-side diffs, Catppuccin Latte syntax theme) and [difftastic](https://github.com/Wilfred/difftastic) (AST-aware structural diffs)
+- **[jj (Jujutsu)](https://github.com/jj-vcs/jj)** as an alternative VCS
+- **[lazygit](https://github.com/jesseduffield/lazygit)** terminal UI for git
+
+### Kubernetes
+- **[k9s](https://k9scli.io)** — terminal UI for cluster management
+- **[stern](https://github.com/stern/stern)** — multi-pod log tailing
+- Plus helm, skaffold, devspace, and rancher CLI
+
+### Modern CLI Replacements
+| Classic | Replacement | What it does |
+|---------|-------------|-------------|
+| `ls`    | `eza`       | File listing with git status and icons |
+| `cat`   | `bat`       | Syntax-highlighted file viewing |
+| `grep`  | `ripgrep`   | Fast recursive search |
+| `find`  | `fd`        | Intuitive file finding |
+| `sed`   | `sd`        | Simpler find-and-replace |
+| `cd`    | `zoxide`    | Frecency-based directory jumping |
+| `du`    | `dust`      | Disk usage visualization |
+| `ps`    | `procs`     | Process viewer |
+| `top`   | `bottom`    | System monitor |
+
+### Languages
+Full LSP, formatter, and linter support configured for:
+Rust, Go, Python, TypeScript/JavaScript, Zig, Ruby, Lua
+
+## Repo Structure
+
+```
+dot_*                    → dotfiles (dot_zshrc → ~/.zshrc)
+dot_config/              → ~/.config/
+  Brewfile               → Homebrew packages
+  ghostty/config         → Terminal config
+  starship/starship.toml → Prompt config
+  zed/settings.json      → Editor config
+  zellij/config.kdl      → Multiplexer config
+  zsh/aliases.zsh        → Shell aliases
+  zsh/functions.zsh      → Shell functions
+dot_gitconfig.tmpl       → Git config (templated for per-machine identity)
+dot_zshrc                → Shell configuration
+dot_zshenv               → Environment variables
+.chezmoiscripts/         → One-time install scripts (Homebrew, Rust, macOS defaults)
 ```
 
-## 📝 License
+## Usage
+
+```bash
+chezmoi diff              # Preview changes before applying
+chezmoi apply -v          # Apply configuration
+chezmoi update -v         # Pull latest and apply
+chezmoi edit ~/.zshrc     # Edit a managed file
+chezmoi add ~/.config/x   # Start managing a new file
+```
+
+## License
 
 MIT

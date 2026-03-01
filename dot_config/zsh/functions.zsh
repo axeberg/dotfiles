@@ -116,12 +116,12 @@ serve() {
     python3 -m http.server "$port"
 }
 
-# Git worktree helpers
-gwt() {
+# Git worktree helpers (named gwtree to avoid conflict with OMZP::git gwt alias)
+gwtree() {
     case "$1" in
         add)
             if [[ -z "$2" || -z "$3" ]]; then
-                echo "Usage: gwt add <path> <branch>"
+                echo "Usage: gwtree add <path> <branch>"
                 return 1
             fi
             git worktree add "$2" "$3"
@@ -131,13 +131,13 @@ gwt() {
             ;;
         remove|rm)
             if [[ -z "$2" ]]; then
-                echo "Usage: gwt remove <path>"
+                echo "Usage: gwtree remove <path>"
                 return 1
             fi
             git worktree remove "$2"
             ;;
         *)
-            echo "Usage: gwt {add|list|remove}"
+            echo "Usage: gwtree {add|list|remove}"
             ;;
     esac
 }

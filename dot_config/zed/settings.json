@@ -1,141 +1,325 @@
+// Zed settings
+// á la Axel
 {
-  // Theme
-  "theme": "Tokyo Night",
-  "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 14,
-  
-  // UI Settings
-  "ui_font_family": "SF Pro Display",
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    }
+  },
+  "ui_font_weight": 300.0,
   "ui_font_size": 14,
-  "cursor_blink": true,
-  "show_whitespaces": "selection",
-  "show_wrap_guides": true,
-  "preferred_line_length": 100,
+  "buffer_font_size": 14.0,
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 300.0,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "icon_theme": "Catppuccin Latte",
+  "base_keymap": "VSCode",
+  "theme": "Catppuccin Latte",
+  "audio": {
+    "experimental.rodio_audio": true
+  },
+  "calls": {
+    "share_on_join": false,
+    "mute_on_join": true
+  },
+  // Will probably never learn...
+  "vim_mode": false,
+  // Yes, I'm weird like that
+  "relative_line_numbers": "enabled",
+  // Top tabs configuration
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  // Show the git status in the tabs
+  "tabs": {
+    "git_status": true
+  },
+  // Programmers don't scroll using the scrollbar
+  "scrollbar": {
+    "show": "never"
+  },
+  // Colored indent guides
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  // Zen-mode
+  "centered_layout": {
+    "left_padding": 0.15,
+    "right_padding": 0.14999961853027344
+  },
+  // Remove annyoing gutter icons
+  "gutter": {
+    "folds": true,
+    "breakpoints": true,
+    "line_numbers": true,
+    "runnables": false
+  },
+  // 24 hours should be the default, silly Americans
+  "journal": {
+    "path": "~/dev/notes",
+    "hour_format": "hour24"
+  },
+  "double_click_in_multibuffer": "open",
+  "redact_private_values": false,
+  "show_edit_predictions": false,
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
+  // LSP
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        },
+        "imports": {
+          "granularity": {
+            "group": "module"
+          },
+          "prefix": "self"
+        },
+        "cargo": {
+          "features": "all"
+        },
+        "procMacro": {
+          "enable": true
+        }
+      }
+    },
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "run": "onType",
+          "fixKind": "safe_fix"
+        }
+      }
+    },
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "configPath": null,
+          "fmt.configPath": null,
+          "fmt.experimental": true,
+          "run": "onSave"
+        }
+      }
+    }
+  },
+  // Language-specific configuration
+  "languages": {
+    "Zig": {
+      "preferred_line_length": 80
+    },
+    "Rust": {
+      "edit_predictions_disabled_in": [
+        "comment",
+        "string"
+      ],
+      "language_servers": [
+        "rust-analyzer"
+      ],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "rust-analyzer"
+          }
+        }
+      ]
+    },
+    "Python": {
+      "language_servers": [
+        "basedpyright",
+        "ruff"
+      ],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_action": "source.fixAll.ruff"
+        },
+        {
+          "code_action": "source.organizeImports.ruff"
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    },
+    "JavaScript": {
+      "language_servers": [
+        "eslint",
+        "oxlint",
+        "oxfmt"
+      ],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "oxfmt"
+          },
+        },
+        {
+          "code_action": "source.organizeImports"
+        },
+        {
+          "code_action": "source.fixAll.oxc"
+        },
+      ],
+      "tab_size": 2
+    },
+    "TypeScript": {
+      "language_servers": [
+        "eslint",
+        "oxlint",
+        "oxfmt"
+      ],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "oxfmt"
+          }
+        },
+        {
+          "code_action": "source.fixAll.oxc"
+        },
+      ],
+      "colorize_brackets": true,
+      "tab_size": 2,
+      "remove_trailing_whitespace_on_save": true,
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": false,
+        "show_type_hints": true
+      }
+    },
+    "TSX": {
+      "language_servers": [
+        "eslint",
+        "oxlint",
+        "oxfmt"
+      ],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "oxfmt"
+          }
+        },
+        {
+          "code_action": "source.fixAll.oxc"
+        }
+      ],
+      "colorize_brackets": true,
+      "tab_size": 2
+    }
+  },
+  // 2, is the number - not 4
   "tab_size": 2,
-  "hard_tabs": false,
-  "soft_wrap": "editor_width",
-  
-  // Editor behavior
-  "format_on_save": true,
-  "autosave": "on_focus_change",
-  "ensure_final_newline_on_save": true,
-  "remove_trailing_whitespace_on_save": true,
-  "auto_update": true,
+  "prettier": {
+    "allowed": false
+  },
+  "format_on_save": "off",
+  "agent": {
+    "tool_permissions": {
+      "default": "allow"
+    },
+    "inline_assistant_model": {
+      "provider": "google",
+      "model": "gemini-3-flash-preview"
+    },
+    "notify_when_agent_waiting": "never",
+    "default_profile": "ask",
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "terminal": true,
+          "batch_tool": true,
+          "code_symbols": true,
+          "copy_path": false,
+          "create_file": true,
+          "delete_path": false,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": false,
+          "move_path": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "symbol_info": true,
+          "thinking": true,
+          "open": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      }
+    },
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-opus-4-6-latest"
+    }
+  },
+  // Hide collaboration panel button
+  "collaboration_panel": {
+    "button": false
+  },
+  // Hide outline panel button
+  "outline_panel": {
+    "button": false
+  },
+  // Open entries in the project panel
+  "project_panel": {
+    "auto_reveal_entries": true
+  },
+  // Hide icons that we don't click
+  "toolbar": {
+    "code_actions": true,
+    "quick_actions": false
+  },
+  // Hide call status
+  "show_call_status_icon": false,
+  // Zed for commit editing
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
+  // No inline auto-complete
+  // Always off
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  
-  // Project panel
-  "project_panel": {
-    "dock": "left",
-    "git_status": true
+  "inlay_hints": {
+    "show_parameter_hints": true,
+    "show_type_hints": true,
+    "show_other_hints": true,
+    "show_value_hints": true
   },
-  
-  // Terminal
-  "terminal": {
-    "font_family": "JetBrains Mono",
-    "font_size": 13,
-    "shell": "/bin/zsh",
-    "working_directory": "current_project_directory",
-    "blinking": "on"
-  },
-  
-  // Vim mode
-  "vim_mode": true,
-  "relative_line_numbers": true,
-  
-  // Git
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
-  },
-  
-  // Language-specific settings
-  "language_overrides": {
-    "Rust": {
-      "tab_size": 4,
-      "formatter": {
-        "external": {
-          "command": "rustfmt",
-          "arguments": ["--edition", "2021"]
-        }
-      }
-    },
-    "Python": {
-      "tab_size": 4,
-      "formatter": {
-        "external": {
-          "command": "black",
-          "arguments": ["-"]
-        }
-      }
-    },
-    "JavaScript": {
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
-    },
-    "TypeScript": {
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
-    },
-    "Go": {
-      "tab_size": 4,
-      "hard_tabs": true,
-      "formatter": {
-        "external": {
-          "command": "gofmt"
-        }
-      }
-    },
-    "YAML": {
-      "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--parser", "yaml"]
-        }
-      }
-    },
-    "JSON": {
-      "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--parser", "json"]
-        }
-      }
-    }
-  },
-  
-  // LSP settings
-  "lsp": {
-    "rust-analyzer": {
-      "initialization_options": {
-        "cargo": {
-          "features": "all"
-        },
-        "checkOnSave": {
-          "command": "clippy"
-        }
-      }
-    }
-  },
-  
-  // Key bindings additions
-  "bindings": {
-    "cmd-p": "file_finder::toggle",
-    "cmd-shift-p": "command_palette::toggle",
-    "cmd-b": "project_panel::toggle",
-    "cmd-j": "terminal::toggle"
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.75
   }
 }

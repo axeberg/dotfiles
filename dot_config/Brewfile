@@ -28,6 +28,10 @@ brew "hyperfine"         # Command-line benchmarking
 brew "tokei"             # Count lines of code
 brew "tealdeer"          # tldr client
 
+# Kubernetes
+brew "stern"             # Multi-pod log tailing
+brew "k9s"               # Terminal UI for k8s
+
 # Development tools
 brew "neovim"
 brew "tmux"

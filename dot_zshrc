@@ -88,10 +88,16 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $real
 [[ -f "$HOME/.config/zsh/aliases.zsh" ]] && source "$HOME/.config/zsh/aliases.zsh"
 [[ -f "$HOME/.config/zsh/functions.zsh" ]] && source "$HOME/.config/zsh/functions.zsh"
 
-# Node (nvm)
+# Node (nvm) - lazy loaded
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm_lazy_load() {
+  unfunction nvm node npm npx pnpm 2>/dev/null
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+for cmd in nvm node npm npx pnpm; do
+  eval "${cmd}() { nvm_lazy_load; ${cmd} \"\$@\" }"
+done
 
 # Deno
 [[ -f "$HOME/.deno/env" ]] && . "$HOME/.deno/env"

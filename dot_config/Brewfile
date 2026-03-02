@@ -43,7 +43,7 @@ brew "cmake"
 brew "pkg-config"
 
 # Language tools
-brew "node"
+brew "nvm"
 brew "pnpm"
 brew "python@3.12"
 brew "go"

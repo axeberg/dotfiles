@@ -96,7 +96,7 @@ nvm_lazy_load() {
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 for cmd in nvm node npm npx pnpm; do
-  eval "${cmd}() { nvm_lazy_load; ${cmd} \"\$@\" }"
+  alias $cmd="unalias nvm node npm npx pnpm 2>/dev/null; nvm_lazy_load; $cmd"
 done
 
 # Deno

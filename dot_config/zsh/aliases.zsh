@@ -117,7 +117,6 @@ alias sed='sd'
 alias ps='procs'
 alias top='btm'  # bottom
 alias du='dust'
-alias cd='z'     # zoxide
 
 # macOS specific
 if [[ "$OSTYPE" == "darwin"* ]]; then

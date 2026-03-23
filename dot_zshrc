@@ -119,12 +119,14 @@ rcs () {
 }
 
 # Tool integrations
+# ORDER MATTERS: fzf must be sourced before atuin so that atuin's ctrl+r
+# binding wins. atuin must always be last among tools that bind ctrl+r.
 . "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"   # defines cd() — do not alias cd elsewhere
+source <(fzf --zsh)                  # binds ctrl+r (overridden by atuin below)
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+eval "$(atuin init zsh)"             # must come last: overrides fzf's ctrl+r
 
 # Key bindings
 bindkey -e
